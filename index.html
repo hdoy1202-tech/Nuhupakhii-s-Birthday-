@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
 
 body {
   background: #100b1c;
-  color: #fff;
+  color: white;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
@@ -158,10 +159,6 @@ button:active {
   background: rgba(255,255,255,.025);
 }
 
-.memory p {
-  margin: 8px 0;
-}
-
 .letter {
   text-align: left;
   background: #f5eaff;
@@ -222,13 +219,13 @@ button:active {
       And no, you can't skip it. 😌
     </p>
 
-    <div class="gift" onclick="openGift()">🎁</div>
+    <div class="gift" id="giftBox">🎁</div>
 
-    <button onclick="openGift()">Open your gift ♡</button>
+    <button id="openGiftBtn">Open your gift ♡</button>
 
     <p class="small">Tap the gift too hehe</p>
 
-    <button onclick="playSong()" style="background:#302442;color:white">
+    <button id="playSongBtn" style="background:#302442;color:white">
       ♫ Play song
     </button>
 
@@ -255,18 +252,172 @@ button:active {
 
     <div class="memory">
       <img class="photo"
-      src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80">
+      src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80"
+      alt="Flowers">
 
       <p>More happiness than you can count. ✨</p>
     </div>
 
     <div class="memory">
       <img class="photo"
-      src="https://images.unsplash.com/photo-1518191795-2d6c2d7a3c6d?auto=format&fit=crop&w=900&q=80">
+      src="https://images.unsplash.com/photo-1518191795-2d6c2d7a3c6d?auto=format&fit=crop&w=900&q=80"
+      alt="A beautiful moment">
 
       <p>More beautiful moments than bad days. 🌷</p>
     </div>
 
     <div class="memory">
       <img class="photo"
-      src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&
+      src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=80"
+      alt="Birthday flowers">
+
+      <p>And more reasons to smile every day. ♡</p>
+    </div>
+
+    <button id="toLetterBtn">One last thing... 💌</button>
+
+    <div class="footer">Made with a little love ♡</div>
+
+  </div>
+</section>
+
+<!-- SCREEN 3 -->
+<section class="screen hidden" id="screen3">
+  <div class="card">
+
+    <div class="tag">JUST FOR YOU ♡</div>
+
+    <h1>One last thing...</h1>
+
+    <div class="heart">💌</div>
+
+    <p>
+      There's something I wanted to tell you.
+      But you have to open it first. 🤭
+    </p>
+
+    <button id="revealBtn">Reveal my letter ♡</button>
+
+    <div id="letterBox" class="hidden">
+
+      <div class="letter">
+
+        <h2 style="text-align:center;color:#9c5bd1">
+          To my Nuhupakhii ♡
+        </h2>
+
+        <p>
+          Happy birthday, Sundori. ♡
+        </p>
+
+        <p>
+          I hope this new year of your life brings you peace,
+          happiness, countless smiles and all the little things
+          you've been wishing for.
+        </p>
+
+        <p>
+          You deserve days that feel lighter, moments that make
+          you genuinely happy, and people who remind you how
+          special you are.
+        </p>
+
+        <p>
+          And whenever life gets a little difficult, I hope you
+          remember that bad days don't last forever. There are
+          still beautiful things waiting for you.
+        </p>
+
+        <p>
+          Keep being your silly, cute, dramatic self.
+          Don't ever lose that little spark of yours. 🤍
+        </p>
+
+        <p>
+          I wish I could make this day a little more special
+          for you, so here's my tiny attempt.
+        </p>
+
+        <p>
+          Happy birthday again, Boujaan.
+          Have the happiest day ever. ♡
+        </p>
+
+        <div class="signature">
+          Always wishing the best for you ♡
+        </div>
+
+      </div>
+
+    </div>
+
+    <button id="backBtn" class="hidden">Back to beginning ↩</button>
+
+    <div class="footer">27 December • Your special day ♡</div>
+
+  </div>
+</section>
+
+<script>
+/* ===== SCREEN NAVIGATION ===== */
+
+function openGift() {
+  document.getElementById("screen1").classList.add("hidden");
+  document.getElementById("screen2").classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
+function showLetter() {
+  document.getElementById("screen2").classList.add("hidden");
+  document.getElementById("screen3").classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
+function revealLetter() {
+  document.getElementById("letterBox").classList.remove("hidden");
+  document.getElementById("revealBtn").classList.add("hidden");
+  document.getElementById("backBtn").classList.remove("hidden");
+}
+
+function goBack() {
+  document.getElementById("screen3").classList.add("hidden");
+  document.getElementById("screen1").classList.remove("hidden");
+  document.getElementById("letterBox").classList.add("hidden");
+  document.getElementById("revealBtn").classList.remove("hidden");
+  document.getElementById("backBtn").classList.add("hidden");
+  window.scrollTo(0, 0);
+}
+
+/* ===== MUSIC ===== */
+
+function playSong() {
+  const box = document.getElementById("musicBox");
+
+  if (box.innerHTML.trim() !== "") {
+    box.innerHTML = "";
+    return;
+  }
+
+  box.innerHTML = `
+    <iframe
+      src="https://www.youtube.com/embed/tcu0K2mKuVQ?autoplay=1"
+      title="Birthday song"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  `;
+}
+
+/* ===== BUTTON CONNECTIONS ===== */
+
+document.getElementById("openGiftBtn").addEventListener("click", openGift);
+document.getElementById("giftBox").addEventListener("click", openGift);
+document.getElementById("playSongBtn").addEventListener("click", playSong);
+document.getElementById("toLetterBtn").addEventListener("click", showLetter);
+document.getElementById("revealBtn").addEventListener("click", revealLetter);
+document.getElementById("backBtn").addEventListener("click", goBack);
+
+</script>
+
+</body>
+</html>
