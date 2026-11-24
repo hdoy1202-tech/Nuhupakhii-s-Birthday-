@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Nuhupakhii ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #352343, #121020 55%, #080812);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,100% { opacity: .2; }
+  50% { opacity: 1; transform: scale(1.7); }
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.moon {
+  font-size: 65px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 20px #e7bfff55);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-10px); }
+}
+
+.tag {
+  letter-spacing: 4px;
+  font-size: 10px;
+  color: #d1b8ee;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 43px;
+  margin: 18px 0;
+  color: #fff1ff;
+}
+
+.sub {
+  color: #c9bfd9;
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 30px;
+}
+
+button {
+  border: 1px solid #d8b9ed;
+  background: linear-gradient(135deg, #d8b9ed, #f3d4e8);
+  color: #21172c;
+  padding: 14px 26px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: .3s;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+.card {
+  display: none;
+  margin-top: 30px;
+  padding: 27px 23px;
+  background: #ffffff09;
+  border: 1px solid #ffffff20;
+  border-radius: 20px;
+  text-align: left;
+  animation: reveal 1s ease;
+}
+
+.card h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: 400;
+  color: #efcffb;
+  margin-bottom: 22px;
+}
+
+.card p {
+  font-size: 13px;
+  color: #e5ddec;
+  line-height: 2.1;
+  margin-bottom: 17px;
+}
+
+.end {
+  text-align: center;
+  color: #edc8f7 !important;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px !important;
+  margin-top: 25px;
+}
+
+.footer {
+  color: #8d809d;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 30px;
+}
+
+@keyframes reveal {
+  from {opacity: 0; transform: translateY(25px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<div class="container">
+<div class="content">
+
+<div class="moon">🌙</div>
+
+<div class="tag">A little surprise for someone special</div>
+
+<h1>Bouuu Nuhupakhii ♡</h1>
+
+<p class="sub">
+Today isn't just another day...<br>
+It's the day someone wonderful was born.
+</p>
+
+<button id="btn" onclick="reveal()">
+Happy Birthday, Jilapir Pach 🎂
+</button>
+
+<div class="card" id="letter">
+
+<h2>Happy Birthday, Sundori ♡</h2>
+
+<p>
+Happy birthday to my Nuhupakhii, my Boujaan.
+Ajker din ta apnar, so ajke shob sadness,
+shob overthinking side-e rekhe ektu beshi hashen.
+</p>
+
+<p>
+I wish apnar life er protita din shundor hok.
+Apnar moner shob iccha aste aste puron hok,
+apni shobshomoy emon kichu moment pan
+jegula apnake genuinely happy kore.
+</p>
+
+<p>
+Hoyto ami shobshomoy perfect vabe kotha bolte pari na,
+onek shomoy beshi explain kori, onek kichu niye vabhi.
+But apnar jonno amar wishes gula always genuine.
+Apni bhalo thaken, nijer kheyal rakhen,
+ar nijer happiness-ta kokhono hariye felben na.
+</p>
+
+<p>
+Thank you for being a part of my life.
+I hope this new year of your life brings you
+peace, beautiful memories, unexpected happiness
+and countless reasons to smile.
+</p>
+
+<p>
+Enjoy your day, birthday girl.
+Ajke apnake ektu beshi pamper kora uchit. 🤍
+</p>
+
+<p class="end">
+Happy Birthday, Boujaan. ♡<br>
+Always keep smiling, Nuhupakhii.
+</p>
+
+</div>
+
+<div class="footer">
+MADE JUST FOR YOU · 27 DECEMBER
+</div>
+
+</div>
+</div>
+
+<script>
+const stars = document.getElementById("stars");
+
+for(let i = 0; i < 100; i++){
+  let s = document.createElement("div");
+  s.className = "star";
+  s.style.left = Math.random() * 100 + "%";
+  s.style.top = Math.random() * 100 + "%";
+  s.style.animationDelay = Math.random() * 3 + "s";
+  stars.appendChild(s);
+}
+
+function reveal(){
+  document.getElementById("btn").style.display = "none";
+  const letter = document.getElementById("letter");
+  letter.style.display = "block";
+  letter.scrollIntoView({behavior:"smooth", block:"center"});
+}
+</script>
+
+</body>
+</html>
