@@ -4,420 +4,720 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Nuhupakhii ♡</title>
+<title>For My Nuhupakhii ♡</title>
+<meta name="theme-color" content="#10091e">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Dancing+Script:wght@600;700&family=Playfair+Display&display=swap');
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  --bg:#10091e;
+  --pink:#ff8fca;
+  --rose:#ffb6db;
+  --purple:#b79aff;
+  --white:#fff5fd;
+  --muted:#c7b7d4;
 }
-
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
-  background: #100b1c;
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
-  min-height: 100vh;
+  margin:0;
+  color:var(--white);
+  font-family:'Poppins',sans-serif;
+  background:
+    radial-gradient(ellipse at 20% 15%,#32184c 0%,transparent 42%),
+    radial-gradient(ellipse at 85% 80%,#25123d 0%,transparent 45%),
+    var(--bg);
+  overflow-x:hidden;
 }
-
-.stars {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    radial-gradient(white 1px, transparent 1px),
-    radial-gradient(#cba6ff 1px, transparent 1px);
-  background-size: 90px 90px, 150px 150px;
-  background-position: 0 0, 40px 60px;
-  opacity: .35;
-  animation: starMove 25s linear infinite;
+button { font-family:inherit; cursor:pointer; }
+#sky,.particles,.shooting-layer {
+  position:fixed; inset:0; pointer-events:none; overflow:hidden;
 }
-
-@keyframes starMove {
-  from { background-position: 0 0, 40px 60px; }
-  to { background-position: 0 500px, 40px 560px; }
+#sky { z-index:0; }
+.star {
+  position:absolute;
+  border-radius:50%;
+  background:#fff;
+  animation:twinkle var(--dur) ease-in-out infinite alternate;
 }
-
+@keyframes twinkle {
+  from {opacity:.18; transform:scale(.65);}
+  to {opacity:1; transform:scale(1.35);}
+}
+.shooting-star {
+  position:absolute;
+  width:130px;height:2px;
+  background:linear-gradient(90deg,transparent,white,transparent);
+  opacity:0;
+  transform:rotate(-35deg);
+  animation:shoot var(--shootdur) linear infinite;
+  animation-delay:var(--delay);
+}
+@keyframes shoot {
+  0% {transform:translate(0,0) rotate(-35deg);opacity:0;}
+  5% {opacity:1;}
+  15% {opacity:0;}
+  100% {transform:translate(420px,280px) rotate(-35deg);opacity:0;}
+}
+.particle {
+  position:absolute;
+  color:#ffacd9;
+  animation:floatUp var(--floatdur) linear forwards;
+}
+@keyframes floatUp {
+  0% {transform:translateY(0) scale(.5);opacity:0;}
+  15% {opacity:1;}
+  100% {transform:translateY(-230px) scale(1.5);opacity:0;}
+}
+main { position:relative; z-index:2; }
 .screen {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 25px 16px;
-  position: relative;
-  z-index: 1;
+  display:none;
+  min-height:100svh;
+  width:100%;
+  padding:35px 18px;
+  align-items:center;
+  justify-content:center;
 }
-
-.hidden {
-  display: none !important;
+.screen.active {
+  display:flex;
+  animation:screenEnter .85s cubic-bezier(.2,.8,.2,1);
 }
-
-.card {
-  width: 100%;
-  max-width: 480px;
-  background: rgba(35, 24, 52, .94);
-  border: 1px solid #59436e;
-  border-radius: 30px;
-  padding: 32px 24px;
-  text-align: center;
-  box-shadow: 0 0 35px rgba(157, 87, 255, .08);
+@keyframes screenEnter {
+  from {opacity:0;transform:translateY(25px) scale(.98);filter:blur(4px);}
+  to {opacity:1;transform:none;filter:blur(0);}
 }
-
-.tag {
-  color: #d8aaff;
-  letter-spacing: 4px;
-  font-size: 11px;
-  margin-bottom: 20px;
+.container { width:min(100%,720px); margin:auto; text-align:center; }
+.glass {
+  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
+  border:1px solid rgba(255,190,231,.19);
+  border-radius:28px;
+  box-shadow:0 15px 60px rgba(0,0,0,.23),0 0 35px rgba(195,115,255,.06);
+  backdrop-filter:blur(12px);
+  padding:clamp(22px,5vw,38px);
 }
-
+.eyebrow {
+  color:#d8b9f7;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-size:11px;
+  margin-bottom:12px;
+}
+h1,h2,.script {
+  font-family:'Dancing Script',cursive;
+  font-weight:700;
+}
 h1 {
-  font-family: 'Dancing Script', cursive;
-  color: #e4b7ff;
-  font-size: clamp(38px, 10vw, 58px);
-  margin-bottom: 12px;
+  font-size:clamp(42px,10vw,76px);
+  line-height:1.12;
+  margin:8px 0 15px;
+  background:linear-gradient(110deg,#fff,#ffc0e4,#d4b6ff,#fff);
+  background-size:250%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:shimmer 6s linear infinite;
 }
-
-h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 25px;
-  font-weight: 400;
-  color: #e8c9ff;
-  margin-bottom: 20px;
+@keyframes shimmer { to {background-position:250% center;} }
+h2 { font-size:clamp(34px,7vw,52px); margin:8px 0 18px; }
+p { line-height:1.9; color:#eadcf3; font-size:14px; }
+.btn {
+  border:1px solid rgba(255,255,255,.24);
+  color:white;
+  background:linear-gradient(135deg,#c86ab3,#8262d9);
+  padding:13px 22px;
+  border-radius:50px;
+  margin:8px 5px;
+  box-shadow:0 5px 25px rgba(185,95,210,.22);
+  transition:.3s;
+  font-size:13px;
 }
-
-p {
-  color: #e6ddef;
-  line-height: 1.9;
-  font-size: 14px;
-  margin: 15px 0;
-}
-
-button {
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  color: #210c38;
-  background: linear-gradient(135deg, #d68aff, #9d64ff);
-  padding: 15px 26px;
-  border-radius: 50px;
-  font-size: 15px;
-  font-weight: 600;
-  margin-top: 15px;
-  transition: .25s;
-}
-
-button:active {
-  transform: scale(.95);
-}
-
-.small {
-  font-size: 12px;
-  opacity: .65;
-}
-
-.gift {
-  font-size: 100px;
-  display: block;
-  margin: 25px auto 10px;
-  animation: bounce 1.8s infinite;
-  cursor: pointer;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
+.btn:hover {transform:translateY(-3px) scale(1.04);box-shadow:0 8px 32px #b75dba55;}
+.btn.secondary {background:rgba(255,255,255,.07);}
+.btn.small {padding:10px 17px;font-size:12px;}
 .heart {
-  color: #e7b3ff;
-  font-size: 38px;
-  animation: pulse 1.5s infinite;
+  font-size:56px;
+  display:inline-block;
+  cursor:pointer;
+  filter:drop-shadow(0 0 15px #ff6ab7);
+  animation:heartBeat 1.35s infinite;
+  transition:.25s;
 }
-
-@keyframes pulse {
-  50% { transform: scale(1.15); }
+.heart:hover {transform:scale(1.25);}
+@keyframes heartBeat {
+  0%,100% {transform:scale(1);}
+  15% {transform:scale(1.17);}
+  30% {transform:scale(.96);}
+  45% {transform:scale(1.12);}
 }
-
-.photo {
-  width: 100%;
-  border-radius: 18px;
-  margin: 12px 0;
-  object-fit: cover;
-  max-height: 280px;
-  border: 1px solid #654d7e;
+.gift {
+  font-size:80px;
+  display:inline-block;
+  cursor:pointer;
+  filter:drop-shadow(0 0 20px #e99cff);
+  animation:giftBounce 2s infinite;
+  transition:.3s;
 }
-
-.memory {
-  border: 1px solid #49365e;
-  border-radius: 20px;
-  padding: 15px;
-  margin: 18px 0;
-  background: rgba(255,255,255,.025);
+@keyframes giftBounce {
+  0%,100% {transform:translateY(0) rotate(0);}
+  25% {transform:translateY(-10px) rotate(-4deg);}
+  50% {transform:translateY(0) rotate(4deg);}
+  75% {transform:translateY(-5px) rotate(-2deg);}
 }
-
+.gift.opening {animation:giftOpen .65s ease forwards;}
+@keyframes giftOpen {
+  0% {transform:scale(1) rotate(0);}
+  40% {transform:scale(1.4) rotate(-12deg);}
+  100% {transform:scale(0) rotate(18deg);opacity:0;}
+}
+.divider {
+  height:1px;
+  width:75%;
+  margin:22px auto;
+  background:linear-gradient(90deg,transparent,#ffb7df,transparent);
+}
+.small-note {color:#bda9cd;font-size:11px;letter-spacing:1px;}
+.nav { margin-top:20px; }
+.section-tag {color:#bfa5ed;font-size:11px;letter-spacing:3px;}
+/* photos */
+.photo-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:22px 0;}
+.polaroid {
+  background:#fff;
+  padding:8px 8px 14px;
+  border-radius:5px;
+  color:#4d3653;
+  transform:rotate(var(--tilt));
+  box-shadow:0 12px 30px #0005;
+  animation:photoPop .8s both;
+  animation-delay:var(--delay);
+}
+@keyframes photoPop {
+  from {opacity:0;transform:translateY(40px) rotate(0) scale(.7);}
+  to {opacity:1;transform:rotate(var(--tilt));}
+}
+.polaroid img {width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px;}
+.polaroid .caption {font-family:'Dancing Script';font-size:17px;margin-top:7px;}
+.photo-frame {
+  width:min(100%,320px);
+  margin:22px auto;
+  background:#fff;
+  padding:10px 10px 17px;
+  border-radius:7px;
+  color:#513c5c;
+  box-shadow:0 15px 45px #0006;
+  animation:frameFloat 4s ease-in-out infinite;
+}
+.photo-frame img {width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;}
+.photo-frame .caption {font-family:'Dancing Script';font-size:23px;padding-top:9px;}
+@keyframes frameFloat {
+  0%,100% {transform:translateY(0) rotate(-1deg);}
+  50% {transform:translateY(-10px) rotate(1deg);}
+}
+.photo-placeholder {
+  aspect-ratio:4/5;
+  border:1px dashed #bfa5dc;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#bfa5dc;
+  font-size:12px;
+  padding:20px;
+}
+/* countdown */
+.countdown {display:flex;justify-content:center;gap:10px;margin:22px 0;flex-wrap:wrap;}
+.time-box {
+  min-width:68px;
+  padding:13px 9px;
+  border-radius:15px;
+  background:rgba(255,255,255,.07);
+  border:1px solid #ffffff18;
+  box-shadow:inset 0 0 15px #e6a3ff08;
+}
+.time-box strong {display:block;font-size:28px;color:#ffc5e5;font-weight:500;}
+.time-box span {font-size:9px;letter-spacing:2px;color:#c9b5d9;}
+.flip {animation:flipNum .5s;}
+@keyframes flipNum {0%{transform:rotateX(90deg);opacity:.2;}100%{transform:rotateX(0);opacity:1;}}
+/* song visual */
+.equalizer {display:flex;justify-content:center;align-items:center;gap:5px;height:55px;margin:10px;}
+.equalizer span {
+  width:5px;border-radius:10px;background:linear-gradient(#ffb4df,#a889ff);
+  animation:equalize .7s ease-in-out infinite alternate;
+  animation-delay:var(--delay);
+}
+@keyframes equalize {from{height:8px;}to{height:var(--h);}}
+/* reasons */
+.reason-card {min-height:180px;display:flex;align-items:center;justify-content:center;flex-direction:column;}
+.reason-text {font-family:'Dancing Script';font-size:clamp(22px,5.5vw,34px);line-height:1.55;animation:reasonReveal .8s both;}
+@keyframes reasonReveal {from{opacity:0;transform:scale(.7) translateY(20px);filter:blur(5px);}to{opacity:1;transform:none;filter:none;}}
+.reason-counter {color:#bda3e7;font-size:11px;letter-spacing:3px;}
+/* envelope */
+.envelope-wrap {padding:20px 0;perspective:1000px;}
+.envelope {
+  position:relative;width:min(100%,300px);height:190px;margin:15px auto;
+  background:linear-gradient(145deg,#f4a9d2,#bd7bc6);
+  border-radius:8px;box-shadow:0 15px 45px #0005;
+  cursor:pointer;transition:.4s;
+}
+.envelope:before {
+  content:"";position:absolute;inset:0;
+  border-style:solid;border-width:95px 150px 0;
+  border-color:#f9c5e2 transparent transparent;
+  transform-origin:top;transition:.7s;z-index:2;
+}
+.envelope.open:before {transform:rotateX(180deg);opacity:.2;}
+.envelope:after {
+  content:"";position:absolute;bottom:0;left:0;
+  border-style:solid;border-width:0 150px 115px;
+  border-color:transparent transparent #d991c8;
+}
+.seal {
+  position:absolute;z-index:3;top:78px;left:calc(50% - 23px);
+  font-size:43px;transition:.5s;
+}
+.envelope.open .seal {transform:scale(0) rotate(180deg);opacity:0;}
+.secret-letter {
+  display:none;text-align:left;margin-top:25px;
+  animation:letterOpen .8s ease both;
+}
+.secret-letter.show {display:block;}
+@keyframes letterOpen {from{opacity:0;transform:translateY(35px) scale(.95);}to{opacity:1;transform:none;}}
+/* wish */
+.wish-star {font-size:65px;display:inline-block;animation:wishPulse 1.5s infinite;}
+@keyframes wishPulse {0%,100%{transform:scale(1);filter:drop-shadow(0 0 5px #ffe7ff);}50%{transform:scale(1.2);filter:drop-shadow(0 0 28px #ffe7ff);}}
+.burst {position:fixed;z-index:9;pointer-events:none;font-size:20px;animation:burst 1.4s ease-out forwards;}
+@keyframes burst {from{transform:translate(0,0) scale(.4);opacity:1;}to{transform:translate(var(--x),var(--y)) scale(1.7);opacity:0;}}
+/* letter */
 .letter {
-  text-align: left;
-  background: #f5eaff;
-  color: #39254c;
-  border-radius: 20px;
-  padding: 22px;
-  line-height: 2;
-  margin-top: 20px;
+  text-align:left;
+  white-space:pre-line;
+  font-size:14px;
+  line-height:2;
+  color:#f4e5f5;
 }
-
-.letter p {
-  color: #39254c;
+.letter-sign {
+  font-family:'Dancing Script';font-size:26px;text-align:right;color:#ffc5e5;
+  animation:signGlow 3s infinite alternate;
 }
-
-.signature {
-  font-family: 'Dancing Script', cursive;
-  font-size: 27px;
-  color: #9c5bd1;
-  text-align: center;
+@keyframes signGlow {to{text-shadow:0 0 18px #ff9edb;}}
+/* original letter */
+.original-letter {display:none;text-align:left;white-space:pre-line;line-height:1.9;font-size:13px;}
+.original-letter.show {display:block;animation:letterOpen .8s both;}
+/* responsive */
+@media(max-width:520px) {
+  .screen {padding:22px 13px;}
+  .glass {border-radius:22px;padding:22px 17px;}
+  .photo-grid {gap:8px;}
+  .polaroid {padding:5px 5px 9px;}
+  .polaroid .caption {font-size:14px;}
+  .btn {padding:12px 17px;}
 }
-
-#musicBox {
-  margin-top: 20px;
-}
-
-#musicBox iframe {
-  width: 100%;
-  height: 170px;
-  border: 0;
-  border-radius: 15px;
-}
-
-.footer {
-  font-size: 11px;
-  color: #b8a4ce;
-  margin-top: 24px;
-}
-
 </style>
 </head>
 
 <body>
+<div id="sky"></div>
+<div class="shooting-layer" id="shooting"></div>
+<div class="particles" id="particles"></div>
 
-<div class="stars"></div>
+<main>
 
-<!-- SCREEN 1 -->
-<section class="screen" id="screen1">
-  <div class="card">
+<!-- 1: INTRO -->
+<section class="screen active" id="s1">
+<div class="container glass">
+<div class="eyebrow">A little surprise for someone special</div>
+<h1>Hey, Nuhupakhii ♡</h1>
+<p>I've been hiding a tiny little surprise for you...</p>
 
-    <div class="tag">A LITTLE SURPRISE FOR YOU</div>
+<div class="gift" id="gift" onclick="giftGo()">🎁</div>
+<p class="small-note">Tap the gift to begin</p>
 
-    <h1>Hey, Nuhupakhii ♡</h1>
+<div class="divider"></div>
 
-    <div class="heart">♡</div>
-
-    <p>
-      Someone has something for you.<br>
-      And no, you can't skip it. 😌
-    </p>
-
-    <div class="gift" id="giftBox">🎁</div>
-
-    <button id="openGiftBtn">Open your gift ♡</button>
-
-    <p class="small">Tap the gift too hehe</p>
-
-    <button id="playSongBtn" style="background:#302442;color:white">
-      ♫ Play song
-    </button>
-
-    <div id="musicBox"></div>
-
-  </div>
+<div class="heart" onclick="goReasons()">♥</div>
+<p class="small-note">Psst... tap the heart for a secret</p>
+<button class="btn" onclick="giftGo()">Open your gift ♡</button>
+</div>
 </section>
 
-<!-- SCREEN 2 -->
-<section class="screen hidden" id="screen2">
-  <div class="card">
+<!-- 2: BIRTHDAY -->
+<section class="screen" id="s2">
+<div class="container glass">
+<div class="eyebrow">Today is all about you</div>
+<h1>Happy Birthday!</h1>
+<h2 style="color:#ffb7df">My Boujaan ♡</h2>
+<p>Today is your day. So here's a little collection of beautiful things, just for you.</p>
 
-    <div class="tag">LEVEL 2 UNLOCKED ✨</div>
+<div class="photo-grid">
+<div class="polaroid" style="--tilt:-4deg;--delay:.1s">
+<img src="https://images.unsplash.com/photo-1519689684561-7c9c6a9f1b1b?auto=format&fit=crop&w=500&q=80" alt="Birthday flowers">
+<div class="caption">A little happiness ♡</div>
+</div>
+<div class="polaroid" style="--tilt:3deg;--delay:.3s">
+<img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=500&q=80" alt="Birthday celebration">
+<div class="caption">Your special day</div>
+</div>
+<div class="polaroid" style="--tilt:-2deg;--delay:.5s">
+<img src="https://images.unsplash.com/photo-1464366400604-6b7f5b5b5b5b?auto=format&fit=crop&w=500&q=80" alt="Birthday cake">
+<div class="caption">Sweet moments ♡</div>
+</div>
+</div>
 
-    <h1>Happy Birthday!</h1>
+<div class="divider"></div>
+<button class="btn secondary" onclick="toggleOriginalLetter()">Read your birthday letter 💌</button>
 
-    <h2>My Boujaan ♡</h2>
+<div class="original-letter" id="originalLetter">
+<p style="font-family:'Dancing Script';font-size:28px;color:#ffc5e5">To my Nuhupakhii ♡</p>
+Happy birthday, Sundori. ♡
 
-    <p>
-      Congratulations! You've officially unlocked another year
-      of being dramatic, cute, annoying and somehow still
-      everyone's favourite person. 🤭
-    </p>
+I hope this new year of your life brings you peace, happiness, countless smiles and all the little things you've been wishing for.
 
-    <div class="memory">
-      <img class="photo"
-      src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80"
-      alt="Flowers">
+You deserve days that feel lighter, moments that make you genuinely happy, and people who remind you how special you are.
 
-      <p>More happiness than you can count. ✨</p>
-    </div>
+And whenever life gets a little difficult, I hope you remember that bad days don't last forever. There are still beautiful things waiting for you.
 
-    <div class="memory">
-      <img class="photo"
-      src="https://images.unsplash.com/photo-1518191795-2d6c2d7a3c6d?auto=format&fit=crop&w=900&q=80"
-      alt="A beautiful moment">
+Keep being your silly, cute, dramatic self. Don't ever lose that little spark of yours. 🤍
 
-      <p>More beautiful moments than bad days. 🌷</p>
-    </div>
+I wish I could make this day a little more special for you, so here's my tiny attempt.
 
-    <div class="memory">
-      <img class="photo"
-      src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=80"
-      alt="Birthday flowers">
+Happy birthday again, Boujaan. Have the happiest day ever. ♡
 
-      <p>And more reasons to smile every day. ♡</p>
-    </div>
+Always wishing the best for you ♡
+</div>
 
-    <button id="toLetterBtn">One last thing... 💌</button>
-
-    <div class="footer">Made with a little love ♡</div>
-
-  </div>
+<button class="btn" onclick="go(3)">One more surprise... ✨</button>
+</div>
 </section>
 
-<!-- SCREEN 3 -->
-<section class="screen hidden" id="screen3">
-  <div class="card">
-
-    <div class="tag">JUST FOR YOU ♡</div>
-
-    <h1>One last thing...</h1>
-
-    <div class="heart">💌</div>
-
-    <p>
-      There's something I wanted to tell you.
-      But you have to open it first. 🤭
-    </p>
-
-    <button id="revealBtn">Reveal my letter ♡</button>
-
-    <div id="letterBox" class="hidden">
-
-      <div class="letter">
-
-        <h2 style="text-align:center;color:#9c5bd1">
-          To my Nuhupakhii ♡
-        </h2>
-
-        <p>
-          Happy birthday, Sundori. ♡
-        </p>
-
-        <p>
-          I hope this new year of your life brings you peace,
-          happiness, countless smiles and all the little things
-          you've been wishing for.
-        </p>
-
-        <p>
-          You deserve days that feel lighter, moments that make
-          you genuinely happy, and people who remind you how
-          special you are.
-        </p>
-
-        <p>
-          And whenever life gets a little difficult, I hope you
-          remember that bad days don't last forever. There are
-          still beautiful things waiting for you.
-        </p>
-
-        <p>
-          Keep being your silly, cute, dramatic self.
-          Don't ever lose that little spark of yours. 🤍
-        </p>
-
-        <p>
-          I wish I could make this day a little more special
-          for you, so here's my tiny attempt.
-        </p>
-
-        <p>
-          Happy birthday again, Boujaan.
-          Have the happiest day ever. ♡
-        </p>
-
-        <div class="signature">
-          Always wishing the best for you ♡
-        </div>
-
-      </div>
-
-    </div>
-
-    <button id="backBtn" class="hidden">Back to beginning ↩</button>
-
-    <div class="footer">27 December • Your special day ♡</div>
-
-  </div>
+<!-- 3: COUNTDOWN -->
+<section class="screen" id="s3">
+<div class="container glass">
+<div class="eyebrow">Counting down to your day</div>
+<h1>Until Your Birthday ♡</h1>
+<p>Every second brings us closer to your special day.</p>
+<div class="countdown" id="countdown">
+<div class="time-box"><strong id="days">00</strong><span>DAYS</span></div>
+<div class="time-box"><strong id="hours">00</strong><span>HOURS</span></div>
+<div class="time-box"><strong id="minutes">00</strong><span>MINUTES</span></div>
+<div class="time-box"><strong id="seconds">00</strong><span>SECONDS</span></div>
+</div>
+<p id="countText">December 27, 2026 · A day for my favourite person.</p>
+<div class="divider"></div>
+<button class="btn" onclick="go(4)">Your little world →</button>
+</div>
 </section>
+
+<!-- 4: PHOTO 1 -->
+<section class="screen" id="s4">
+<div class="container glass">
+<div class="eyebrow">Her little world · 01</div>
+<h1>Little Nuhupakhii ♡</h1>
+<div class="photo-frame">
+<img src="images/nuha1.jpg" alt="Nuha childhood photo 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+<div class="photo-placeholder" style="display:none">Your childhood photo goes here ♡</div>
+<div class="caption">A tiny little cutie</div>
+</div>
+<p>Some things were adorable from the very beginning.</p>
+<button class="btn" onclick="go(5)">Next little memory →</button>
+</div>
+</section>
+
+<!-- 5: PHOTO 2 -->
+<section class="screen" id="s5">
+<div class="container glass">
+<div class="eyebrow">Little memories · 02</div>
+<h1>A Little Memory ♡</h1>
+<div class="photo-frame">
+<img src="images/nuha2.jpg" alt="Nuha childhood photo 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+<div class="photo-placeholder" style="display:none">Your second childhood photo goes here ♡</div>
+<div class="caption">A memory to keep</div>
+</div>
+<p>Some memories don't need words. Just a smile.</p>
+<button class="btn" onclick="go(6)">Another one →</button>
+</div>
+</section>
+
+<!-- 6: PHOTO 3 -->
+<section class="screen" id="s6">
+<div class="container glass">
+<div class="eyebrow">Another little memory · 03</div>
+<h1>One More ♡</h1>
+<div class="photo-frame">
+<img src="images/nuha3.jpg" alt="Nuha childhood photo 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+<div class="photo-placeholder" style="display:none">Your third childhood photo goes here ♡</div>
+<div class="caption">Little you, forever precious</div>
+</div>
+<p>And this little corner is just for you.</p>
+<button class="btn" onclick="go(7)">A song for you ♫</button>
+</div>
+</section>
+
+<!-- 7: SONG -->
+<section class="screen" id="s7">
+<div class="container glass">
+<div class="eyebrow">Her favourite song</div>
+<h1>Bhalobasi Bole Dao ♡</h1>
+<p>Some songs just feel a little more special when they're yours.</p>
+<div class="equalizer" aria-label="Animated music bars">
+<span style="--h:32px;--delay:0s"></span>
+<span style="--h:48px;--delay:.2s"></span>
+<span style="--h:25px;--delay:.1s"></span>
+<span style="--h:42px;--delay:.3s"></span>
+<span style="--h:52px;--delay:.15s"></span>
+<span style="--h:30px;--delay:.4s"></span>
+<span style="--h:45px;--delay:.25s"></span>
+<span style="--h:20px;--delay:.5s"></span>
+<span style="--h:38px;--delay:.35s"></span>
+</div>
+<div id="songEmbed" style="max-width:100%;overflow:hidden;border-radius:14px">
+<p class="small-note">Song player will be added when the exact video link is ready ♡</p>
+</div>
+<p>For the moments when you want to feel a little more.</p>
+<button class="btn" onclick="go(8)">10 little reasons →</button>
+</div>
+</section>
+
+<!-- 8: REASONS -->
+<section class="screen" id="s8">
+<div class="container glass">
+<div class="eyebrow">A little list from my heart</div>
+<h1>10 Little Reasons ♡</h1>
+<p>Tap below. One reason at a time.</p>
+
+<div class="reason-card" id="reasonCard">
+<div class="reason-counter" id="reasonCounter">READY?</div>
+<div class="reason-text" id="reasonText">A little something I wanted you to know...</div>
+</div>
+
+<button class="btn" id="reasonBtn" onclick="nextReason()">Reveal a reason ♡</button>
+<div class="nav">
+<button class="btn secondary small" onclick="go(9)">A secret envelope →</button>
+</div>
+</div>
+</section>
+
+<!-- 9: SECRET ENVELOPE -->
+<section class="screen" id="s9">
+<div class="container glass">
+<div class="eyebrow">Something I kept for you</div>
+<h1>A Secret Envelope 💌</h1>
+<p>There's a little message hidden inside. Tap to open.</p>
+<div class="envelope-wrap">
+<div class="envelope" id="envelope" onclick="openEnvelope()">
+<div class="seal">💌</div>
+</div>
+</div>
+<div class="secret-letter" id="secretLetter">
+<h2 style="color:#ffc5e5">Dear Nuhupakhii, ♡</h2>
+<p>Even on ordinary days, I hope you find little things that make you happy. You deserve kindness, peace, laughter, and beautiful surprises—not just on your birthday, but all year long.</p>
+<p>Keep this little message somewhere in your heart. Whenever you see it, remember that someone made this tiny corner of the internet just to make you smile.</p>
+<p>A little secret, just for you ♡</p>
+</div>
+<button class="btn" onclick="go(10)">Make a wish ✨</button>
+</div>
+</section>
+
+<!-- 10: FINAL -->
+<section class="screen" id="s10">
+<div class="container glass">
+<div class="eyebrow">One last thing...</div>
+<h1>Make a Wish ♡</h1>
+<div class="wish-star" onclick="makeWish()">🌟</div>
+<p>Tap the star and make a little wish.</p>
+<button class="btn" onclick="makeWish()">Make my wish ✨</button>
+<div class="divider"></div>
+<button class="btn secondary" onclick="revealFinal()">Open your last letter 💌</button>
+
+<div id="finalLetter" style="display:none;text-align:left;margin-top:25px;animation:letterOpen 1s both">
+<h2 style="text-align:center;color:#ffb7df">আমার নুহুপাখি ♡</h2>
+<div class="letter">
+শুভ জন্মদিন, আমার সুন্দরী।
+
+আজকের দিনটা তোমার, আর আমি চাই দিনটা তোমার জন্য অনেক সুন্দর কিছু মুহূর্ত নিয়ে আসুক। তোমার আগামী দিনগুলো হাসিতে ভরে উঠুক, তোমার ছোট ছোট ইচ্ছেগুলো পূর্ণ হোক, আর জীবনের প্রতিটা নতুন অধ্যায় তোমাকে আগের চেয়ে একটু বেশি সুখী করুক।
+
+জানো, সব সুন্দর জিনিস শব্দে বোঝানো যায় না। কিছু অনুভূতি শুধু নীরবে থেকে যায়, কিছু মানুষ অজান্তেই দিনের একটা সুন্দর অংশ হয়ে ওঠে। তুমি আমার কাছে তেমনই কিছু সুন্দর মুহূর্তের নাম।
+
+তোমার মন খারাপের দিনগুলো ছোট হয়ে আসুক, হাসির দিনগুলো দীর্ঘ হোক। তুমি কখনো নিজের স্বপ্নগুলোকে ছোট করে দেখো না। তুমি অনেক সুন্দর সুন্দর জিনিস পাওয়ার যোগ্য, অনেক আনন্দের, অনেক শান্তির।
+
+আর এই ছোট্ট website-টা? এটা শুধু কিছু code, ছবি আর animation না। এর প্রতিটা পাতায় তোমার জন্য একটু সময়, একটু ভাবনা, আর কিছু কথা জমিয়ে রেখেছি—যেগুলো হয়তো সামনাসামনি এত সুন্দর করে বলা হতো না।
+
+সবসময় হাসিখুশি থেকো, নিজের মতো থেকো, আর তোমার ওই ছোট্ট পাখির মতো মনটা যত্নে রেখো।
+
+শুভ জন্মদিন, নুহুপাখি। তোমার পৃথিবীটা সুন্দর হোক। ♡
+</div>
+<div class="letter-sign">— তোমার তেরা লোক ♡</div>
+</div>
+
+<div class="divider"></div>
+<p class="script" style="font-size:28px;color:#ffc5e5">Happy Birthday, Nuhupakhii ♡</p>
+<button class="btn secondary" onclick="go(1)">Back to the beginning ↺</button>
+</div>
+</section>
+
+</main>
 
 <script>
-/* ===== SCREEN NAVIGATION ===== */
-
-function openGift() {
-  document.getElementById("screen1").classList.add("hidden");
-  document.getElementById("screen2").classList.remove("hidden");
-  window.scrollTo(0, 0);
+/* STAR FIELD */
+const sky=document.getElementById('sky');
+for(let i=0;i<95;i++){
+  const star=document.createElement('div');
+  star.className='star';
+  star.style.left=Math.random()*100+'%';
+  star.style.top=Math.random()*100+'%';
+  star.style.width=(Math.random()*2.5+1)+'px';
+  star.style.height=star.style.width;
+  star.style.setProperty('--dur',(Math.random()*3+1)+'s');
+  sky.appendChild(star);
 }
 
-function showLetter() {
-  document.getElementById("screen2").classList.add("hidden");
-  document.getElementById("screen3").classList.remove("hidden");
-  window.scrollTo(0, 0);
+/* SHOOTING STARS */
+const shooting=document.getElementById('shooting');
+for(let i=0;i<5;i++){
+  const s=document.createElement('div');
+  s.className='shooting-star';
+  s.style.top=(Math.random()*45)+'%';
+  s.style.left=(Math.random()*35)+'%';
+  s.style.setProperty('--shootdur',(Math.random()*7+6)+'s');
+  s.style.setProperty('--delay',(Math.random()*10)+'s');
+  shooting.appendChild(s);
 }
 
-function revealLetter() {
-  document.getElementById("letterBox").classList.remove("hidden");
-  document.getElementById("revealBtn").classList.add("hidden");
-  document.getElementById("backBtn").classList.remove("hidden");
+/* PARTICLES */
+function particle(x,y,symbol='♡'){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.textContent=symbol;
+  p.style.left=x+'px';
+  p.style.top=y+'px';
+  p.style.setProperty('--floatdur',(Math.random()*1.5+1.3)+'s');
+  document.getElementById('particles').appendChild(p);
+  setTimeout(()=>p.remove(),3000);
+}
+function heartBurst(){
+  for(let i=0;i<15;i++){
+    particle(window.innerWidth/2+(Math.random()*80-40),window.innerHeight/2+(Math.random()*50-25),['♡','✦','♥','✨'][Math.floor(Math.random()*4)]);
+  }
 }
 
-function goBack() {
-  document.getElementById("screen3").classList.add("hidden");
-  document.getElementById("screen1").classList.remove("hidden");
-  document.getElementById("letterBox").classList.add("hidden");
-  document.getElementById("revealBtn").classList.remove("hidden");
-  document.getElementById("backBtn").classList.add("hidden");
-  window.scrollTo(0, 0);
+/* NAVIGATION */
+function go(n){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const next=document.getElementById('s'+n);
+  if(next)next.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  heartBurst();
+}
+function giftGo(){
+  const gift=document.getElementById('gift');
+  if(gift)gift.classList.add('opening');
+  setTimeout(()=>go(2),550);
+}
+function goReasons(){
+  heartBurst();
+  setTimeout(()=>go(8),250);
 }
 
-/* ===== MUSIC ===== */
+/* ORIGINAL LETTER */
+function toggleOriginalLetter(){
+  const box=document.getElementById('originalLetter');
+  box.classList.toggle('show');
+}
 
-function playSong() {
-  const box = document.getElementById("musicBox");
-
-  if (box.innerHTML.trim() !== "") {
-    box.innerHTML = "";
+/* COUNTDOWN - Bangladesh UTC+6 */
+const birthday=new Date('2026-12-27T00:00:00+06:00').getTime();
+function updateCountdown(){
+  const now=Date.now();
+  let diff=birthday-now;
+  if(diff<=0){
+    document.getElementById('countText').textContent='IT IS YOUR DAY! HAPPY BIRTHDAY ♡';
+    ['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');
     return;
   }
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff%86400000/3600000);
+  const m=Math.floor(diff%3600000/60000);
+  const s=Math.floor(diff%60000/1000);
+  setNum('days',d);setNum('hours',h);setNum('minutes',m);setNum('seconds',s);
+}
+function setNum(id,value){
+  const el=document.getElementById(id);
+  const v=String(value).padStart(2,'0');
+  if(el.textContent!==v){
+    el.textContent=v;
+    el.classList.remove('flip');
+    void el.offsetWidth;
+    el.classList.add('flip');
+  }
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
 
-  box.innerHTML = `
-    <iframe
-      src="https://www.youtube.com/embed/tcu0K2mKuVQ?autoplay=1"
-      title="Birthday song"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
-  `;
+/* REASONS */
+const reasons=[
+"তোমার হাসিটা এমন, যেন ক্লান্ত দিনের শেষে হঠাৎ এক টুকরো রোদ এসে পড়ে। ♡",
+"তুমি হয়তো জানো না, তোমার ছোট ছোট কথাগুলোও কারো দিন সুন্দর করে দিতে পারে।",
+"পৃথিবীটা যখন ভীষণ ব্যস্ত, তোমার কথা ভাবা যেন একটু শান্তিতে থেমে থাকা।",
+"তোমার অভিমানেও এক অদ্ভুত মায়া আছে, যা শব্দ দিয়ে বোঝানো যায় না।",
+"হাজারটা সুন্দর মানুষের ভিড়েও, তোমার মতো করে আর কেউ গল্প হয়ে ওঠে না।",
+"You make ordinary moments feel like pages worth keeping.",
+"Somewhere between your laughter and your silence, the world feels softer.",
+"If happiness had a sound, I think it would borrow a little from your voice.",
+"You are the kind of beautiful that a photograph could never quite explain.",
+"Not because you're perfect, but because being you is already something rare. ♡"
+];
+let reasonIndex=0;
+function nextReason(){
+  if(reasonIndex>=reasons.length){
+    document.getElementById('reasonText').textContent="That's all ten... but there are still more reasons than I could ever write. ♡";
+    document.getElementById('reasonCounter').textContent="10 / 10";
+    document.getElementById('reasonBtn').textContent="Read them again ♡";
+    reasonIndex=0;
+    heartBurst();
+    return;
+  }
+  document.getElementById('reasonCounter').textContent=(reasonIndex+1)+" / 10";
+  document.getElementById('reasonText').textContent=reasons[reasonIndex];
+  document.getElementById('reasonText').classList.remove('reasonReveal');
+  void document.getElementById('reasonText').offsetWidth;
+  document.getElementById('reasonText').classList.add('reasonReveal');
+  document.getElementById('reasonBtn').textContent=reasonIndex===9?"One last reason ♡":"Next reason ♡";
+  reasonIndex++;
+  heartBurst();
 }
 
-/* ===== BUTTON CONNECTIONS ===== */
+/* ENVELOPE */
+function openEnvelope(){
+  const env=document.getElementById('envelope');
+  const msg=document.getElementById('secretLetter');
+  if(!env.classList.contains('open')){
+    env.classList.add('open');
+    msg.classList.add('show');
+    heartBurst();
+  }else{
+    msg.classList.toggle('show');
+  }
+}
 
-document.getElementById("openGiftBtn").addEventListener("click", openGift);
-document.getElementById("giftBox").addEventListener("click", openGift);
-document.getElementById("playSongBtn").addEventListener("click", playSong);
-document.getElementById("toLetterBtn").addEventListener("click", showLetter);
-document.getElementById("revealBtn").addEventListener("click", revealLetter);
-document.getElementById("backBtn").addEventListener("click", goBack);
-
+/* WISH */
+function makeWish(){
+  const symbols=['✨','🌟','♡','✦','💫','🌸'];
+  for(let i=0;i<35;i++){
+    const b=document.createElement('div');
+    b.className='burst';
+    b.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    b.style.left=(window.innerWidth/2)+'px';
+    b.style.top=(window.innerHeight/2)+'px';
+    b.style.setProperty('--x',(Math.random()*window.innerWidth-window.innerWidth/2)+'px');
+    b.style.setProperty('--y',(Math.random()*window.innerHeight-window.innerHeight/2)+'px');
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),1500);
+  }
+}
+function revealFinal(){
+  const box=document.getElementById('finalLetter');
+  box.style.display='block';
+  makeWish();
+}
 </script>
-
 </body>
 </html>
