@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Nuha ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: #222;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 75% 35%, #fff8ed 0%, transparent 36%),
+    #fff;
+}
+
+/* LEFT TEXT */
+
+.intro {
+  position: absolute;
+  left: 8%;
+  top: 34%;
+  z-index: 5;
+  animation: textIn 1.4s ease both;
+}
+
+.intro h1 {
+  font-size: clamp(38px, 6vw, 78px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -3px;
+}
+
+.intro h1 span {
+  display: block;
+}
+
+.orange {
+  color: #e69a49;
+  font-weight: 600;
+}
+
+.intro p {
+  margin-top: 24px;
+  max-width: 330px;
+  font-size: 12px;
+  line-height: 2;
+  color: #aaa;
+  letter-spacing: .3px;
+}
+
+/* PHOTO RING */
+
+.ring-area {
+  position: absolute;
+  width: 390px;
+  height: 390px;
+  right: 12%;
+  top: 11%;
+  display: grid;
+  place-items: center;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  animation: ringRotate 35s linear infinite;
+}
+
+.ring-photo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 98px;
+  height: 124px;
+  object-fit: cover;
+  padding: 6px;
+  background: #fff;
+  box-shadow: 0 8px 25px #00000012;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--angle))
+    translateY(-155px)
+    rotate(calc(var(--angle) * -1));
+  animation: photoFloat 3.5s ease-in-out infinite;
+  animation-delay: var(--delay);
+  transition: transform .4s, box-shadow .4s;
+}
+
+.ring-photo:hover {
+  box-shadow: 0 15px 35px #e6a35c55;
+}
+
+/* CURVED BOTTOM GALLERY */
+
+.gallery {
+  position: absolute;
+  bottom: -80px;
+  left: -10%;
+  width: 120%;
+  height: 270px;
+  pointer-events: none;
+}
+
+.gallery-track {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: max-content;
+  animation: galleryMove 38s linear infinite;
+}
+
+.gallery img {
+  width: 108px;
+  height: 122px;
+  object-fit: cover;
+  background: white;
+  padding: 5px;
+  box-shadow: 0 5px 18px #00000015;
+  flex-shrink: 0;
+}
+
+/* Curve arrangement */
+.gallery img:nth-child(1),
+.gallery img:nth-child(13) {
+  transform: translateY(70px) rotate(-9deg);
+}
+.gallery img:nth-child(2),
+.gallery img:nth-child(12) {
+  transform: translateY(42px) rotate(-6deg);
+}
+.gallery img:nth-child(3),
+.gallery img:nth-child(11) {
+  transform: translateY(20px) rotate(-3deg);
+}
+.gallery img:nth-child(4),
+.gallery img:nth-child(10) {
+  transform: translateY(0px) rotate(2deg);
+}
+.gallery img:nth-child(5),
+.gallery img:nth-child(9) {
+  transform: translateY(-12px) rotate(5deg);
+}
+.gallery img:nth-child(6),
+.gallery img:nth-child(8) {
+  transform: translateY(-4px) rotate(7deg);
+}
+.gallery img:nth-child(7) {
+  transform: translateY(15px) rotate(4deg);
+}
+
+/* SMALL DETAILS */
+
+.heart {
+  position: absolute;
+  color: #e9aa69;
+  opacity: .4;
+  animation: heartFloat 5s ease-in-out infinite;
+}
+
+.heart1 {
+  top: 20%;
+  left: 45%;
+  font-size: 18px;
+}
+
+.heart2 {
+  top: 76%;
+  right: 12%;
+  font-size: 12px;
+  animation-delay: 1s;
+}
+
+.heart3 {
+  top: 13%;
+  right: 8%;
+  font-size: 14px;
+  animation-delay: 2s;
+}
+
+.footer {
+  position: absolute;
+  bottom: 22px;
+  left: 30px;
+  font-size: 10px;
+  color: #c2c2c2;
+  letter-spacing: 1px;
+}
+
+/* ANIMATIONS */
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes photoFloat {
+  0%, 100% { margin-top: 0px; }
+  50% { margin-top: -8px; }
+}
+
+@keyframes galleryMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes textIn {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.15);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .page {
+    min-height: 100svh;
+  }
+
+  .intro {
+    top: 10%;
+    left: 8%;
+  }
+
+  .intro h1 {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+
+  .intro p {
+    font-size: 10px;
+    max-width: 250px;
+    margin-top: 12px;
+    line-height: 1.8;
+  }
+
+  .ring-area {
+    width: 270px;
+    height: 270px;
+    right: 50%;
+    transform: translateX(50%);
+    top: 38%;
+  }
+
+  .ring-photo {
+    width: 72px;
+    height: 94px;
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--angle))
+      translateY(-108px)
+      rotate(calc(var(--angle) * -1));
+  }
+
+  .gallery {
+    height: 175px;
+    bottom: -55px;
+  }
+
+  .gallery-track {
+    gap: 12px;
+  }
+
+  .gallery img {
+    width: 78px;
+    height: 92px;
+  }
+
+  .footer {
+    bottom: 12px;
+    left: 15px;
+    font-size: 8px;
+  }
+}
+
+@media (max-height: 700px) and (max-width: 700px) {
+  .intro {
+    top: 5%;
+  }
+  .ring-area {
+    top: 34%;
+    width: 230px;
+    height: 230px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="heart heart1">♡</div>
+  <div class="heart heart2">✦</div>
+  <div class="heart heart3">♡</div>
+
+  <!-- Birthday text -->
+  <div class="intro">
+    <h1>
+      <span>Happy</span>
+      <span>Birthday</span>
+      <span class="orange">Nuha</span>
+    </h1>
+
+    <p>
+      To the sweetest soul and the prettiest smile.
+      May your day be filled with little moments
+      that make your heart happy. ♡
+    </p>
+  </div>
+
+  <!-- Circular photo animation -->
+  <div class="ring-area">
+    <div class="ring">
+
+      <img class="ring-photo"
+        src="IMG_20261023_232458_932.jpg"
+        style="--angle:0deg;--delay:0s">
+
+      <img class="ring-photo"
+        src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg"
+        style="--angle:45deg;--delay:.3s">
+
+      <img class="ring-photo"
+        src="1793213506695.jpg"
+        style="--angle:90deg;--delay:.6s">
+
+      <img class="ring-photo"
+        src="IMG_20261023_232458_932.jpg"
+        style="--angle:135deg;--delay:.9s">
+
+      <img class="ring-photo"
+        src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg"
+        style="--angle:180deg;--delay:1.2s">
+
+      <img class="ring-photo"
+        src="1793213506695.jpg"
+        style="--angle:225deg;--delay:1.5s">
+
+      <img class="ring-photo"
+        src="IMG_20261023_232458_932.jpg"
+        style="--angle:270deg;--delay:1.8s">
+
+      <img class="ring-photo"
+        src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg"
+        style="--angle:315deg;--delay:2.1s">
+
+    </div>
+  </div>
+
+  <!-- Moving curved photo strip -->
+  <div class="gallery">
+    <div class="gallery-track">
+
+      <img src="IMG_20261023_232458_932.jpg">
+      <img src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg">
+      <img src="1793213506695.jpg">
+      <img src="IMG_20261023_232458_932.jpg">
+      <img src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg">
+      <img src="1793213506695.jpg">
+      <img src="IMG_20261023_232458_932.jpg">
+      <img src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg">
+      <img src="1793213506695.jpg">
+      <img src="IMG_20261023_232458_932.jpg">
+      <img src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg">
+      <img src="1793213506695.jpg">
+      <img src="IMG_20261023_232458_932.jpg">
+
+      <!-- duplicate strip for seamless movement -->
+      <img src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg">
+      <img src="1793213506695.jpg">
+      <img src="IMG_20261023_232458_932.jpg">
+      <img src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg">
+      <img src="1793213506695.jpg">
+      <img src="IMG_20261023_232458_932.jpg">
+      <img src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg">
+      <img src="1793213506695.jpg">
+      <img src="IMG_20261023_232458_932.jpg">
+      <img src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg">
+      <img src="1793213506695.jpg">
+      <img src="IMG_20261023_232458_932.jpg">
+      <img src="Messenger_creation_FFDA760D-3673-4450-9C09-E3DD04E0463B.jpeg">
+
+    </div>
+  </div>
+
+  <div class="footer">MADE WITH ♡ FOR NUHA</div>
+
+</div>
+
+</body>
+</html>
